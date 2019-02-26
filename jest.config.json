@@ -1,0 +1,11 @@
+{
+  "bail": true,
+  "clearMocks": true,
+  "collectCoverage": true,
+  "collectCoverageFrom": ["utils/*.{js,jsx}"
+  ],
+  "coverageDirectory": "coverage",
+  "coveragePathIgnorePatterns": ["/node_modules/"],
+  "verbose": true,
+  "testEnvironment": "jest-environment-jsdom"
+}

@@ -1,0 +1,46 @@
+{
+  "plugins": [
+    "node",
+    "security",
+    "jest"
+  ],
+  "extends": [
+    "plugin:node/recommended",
+    "plugin:security/recommended",
+    "airbnb",
+    "plugin:jest/recommended"
+  ],
+  "rules": {
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 1
+      }
+    ],
+    "comma-dangle": ["error", {
+      "functions": "never"
+    }],
+    "no-underscore-dangle": 0,
+    "security/detect-non-literal-fs-filename": 0,
+    "security/detect-child-process": 0,
+    "security/detect-non-literal-regexp": 0,
+    "security/detect-object-injection": 0,
+    "indent": ["error", 2],
+    "no-undef": 0,
+    "no-trailing-spaces": [0, {
+      "skipBlankLines": true
+    }],
+    "prefer-destructuring": [0, "never"],
+    "one-var-declaration-per-line": [0, "never"],
+    "one-var": [2, {
+      "var": "never",
+      "let": "always",
+      "const": "never"
+    }],
+    "import/prefer-default-export": [0, "never"],
+    "max-len": ["error", {
+      "code": 150
+    }]
+  }
+}
