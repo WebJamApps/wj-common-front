@@ -1,6 +1,6 @@
 {
   "name": "wj-common-front",
-  "version": "0.0.1-beta.0",
+  "version": "0.0.2",
   "license": "MIT",
   "description": "Common frontend code for WebJamApps",
   "main": "index.js",
