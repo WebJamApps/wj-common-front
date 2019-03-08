@@ -179,7 +179,7 @@ describe('the appUtils', () => {
         display: ''
       },
       css() {}
-    });
+    }, 'returnIsWide');
     expect(document.getElementsByClassName('swipe-area')[0].style.display).toBe('block');
     done();
   });
@@ -194,8 +194,19 @@ describe('the appUtils', () => {
         display: ''
       },
       css() {}
-    });
+    }, 'returnIsWide');
     expect(au.hiddenAlready).toBe(true);
+    done();
+  });
+  it('handles screen size when menu is toggled', (done) => {
+    au.returnIsWide = function returnIsWide() {
+      return true;
+    };
+    document.body.innerHTML = '<div class="mobile-menu-toggle page-host"><div class="swipe-area"></div><div class="drawer"></div></div>';
+    const cb = au.handleScreenSize({
+      menuToggled: true
+    }, true, null, 'returnIsWide');
+    expect(cb).toBe(true);
     done();
   });
   it('provides a click function', (done) => {
@@ -233,19 +244,6 @@ describe('the appUtils', () => {
     document.body.innerHTML = '<div class="mobile-menu-toggle page-host"><div class="swipe-area"></div><div class="drawer"></div></div>';
     const cb = au.returnIsWide({
       contentWidth: '182px'
-    }, true, null, {
-      css() {}
-    });
-    expect(cb).toBe(true);
-    done();
-  });
-  it('handles screen size wehn menu is toggled', (done) => {
-    au.returnIsWide = function returnIsWide() {
-      return true;
-    };
-    document.body.innerHTML = '<div class="mobile-menu-toggle page-host"><div class="swipe-area"></div><div class="drawer"></div></div>';
-    const cb = au.handleScreenSize({
-      menuToggled: true
     }, true, null, {
       css() {}
     });

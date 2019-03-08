@@ -21,7 +21,7 @@
     "installglobals": "yarn global add npm@next && yarn global add jest && yarn global add snyk",
     "cleaninstall": "rm -rf yarn.lock && rm -rf node_modules && yarn cache clean && npm run installglobals && yarn install",
     "test": "jest --no-cache --config jest.config.json --notify && eslint .",
-    "test:local": "jest --no-cache --config jest.config.json --notify && yarn fix:lint",
+    "test:local": "jest --no-cache --config jest.config.json --notify && yarn fix:lint && yarn cc",
     "fix:lint": "eslint . --fix",
     "snyk:test": "snyk test",
     "snyk:monitor": "snyk monitor",
