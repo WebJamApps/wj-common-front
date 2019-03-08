@@ -111,7 +111,7 @@ exports.handleScreenSizeCLC = function handleScreenSize(app, isWide, drawerParen
   } else if (isWide) {
     this.hiddenAlready = false;
   }
-  return this.returnIsWide(app, isWide, drawer, drawerParent);
+  return this.returnIsWideCLC(app, isWide, drawer, drawerParent);
 };
 
 exports.handleScreenSize = function handleScreenSize(app, isWide, drawerParent) {
