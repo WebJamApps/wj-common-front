@@ -1,6 +1,6 @@
 {
   "name": "wj-common-front",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "description": "Common frontend code for WebJamApps",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "utils/"
   ],
   "engines": {
-    "node": ">=11.9.0"
+    "node": ">=11.10.0"
   },
   "author": "HandlersAndKickers",
   "contributors": [{
@@ -21,10 +21,11 @@
     "installglobals": "yarn global add npm@next && yarn global add jest && yarn global add snyk",
     "cleaninstall": "rm -rf yarn.lock && rm -rf node_modules && yarn cache clean && npm run installglobals && yarn install",
     "test": "jest --no-cache --config jest.config.json --notify && eslint .",
-    "test:local": "jest --no-cache --config jest.config.json --notify && yarn fix:lint",
+    "test:local": "jest --no-cache --config jest.config.json --notify && yarn fix:lint && yarn cc",
     "fix:lint": "eslint . --fix",
     "snyk:test": "snyk test",
-    "snyk:monitor": "snyk monitor"
+    "snyk:monitor": "snyk monitor",
+    "snyk:wizard": "snyk wizard"
   },
   "devDependencies": {
     "cross-env": "latest",
@@ -38,7 +39,7 @@
     "eslint-plugin-security": "latest",
     "jest": "latest",
     "sinon": "latest",
-    "snyk": "^1.121.1"
+    "snyk": "latest"
   },
   "dependencies": {
     "dotenv": "latest"
