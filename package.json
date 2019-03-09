@@ -9,7 +9,7 @@
     "utils/"
   ],
   "engines": {
-    "node": ">=11.9.0"
+    "node": ">=11.10.0"
   },
   "author": "HandlersAndKickers",
   "contributors": [
