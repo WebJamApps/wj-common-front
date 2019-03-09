@@ -170,8 +170,151 @@ describe('the appUtils', () => {
     expect(cb).toBe(true);
     done();
   });
+  it('checks if widescreen, fixes content width and returns true', (done) => {
+    document.body.innerHTML = '<div class="swipe-area"></div><div class="main-panel">'
+      + '</div><div class="drawer-parent"><div class="drawer"></div><button class="mobile-menu-toggle"></button></div>';
+    const app = {
+      menuToggled: false,
+      contentWidth: '0px'
+    };
+    const drawer = document.getElementsByClassName('drawer')[0];
+    const drawerParent = {
+      css() {}
+    };
+    const cb = au.returnIsWide(app, true, drawer, drawerParent);
+    expect(cb).toBe(true);
+    done();
+  });
+  it('handles if wide and drawer is not available', (done) => {
+    document.body.innerHTML = '<div class="swipe-area"></div><div class="main-panel">'
+      + '</div><div class="drawer-parent"><button class="mobile-menu-toggle"></button></div>';
+    const app = {
+      menuToggled: false,
+      contentWidth: '0px'
+    };
+    const drawer = document.getElementsByClassName('drawer')[0];
+    const drawerParent = {
+      css() {}
+    };
+    const cb = au.returnIsWide(app, true, drawer, drawerParent);
+    expect(cb).toBe(true);
+    done();
+  });
+  it('handles CLC headers and logo', (done) => {
+    document.body.innerHTML = '<div class="swipe-area"></div><div class="main-panel">'
+      + '<h2 class="header-text"></h2><p class="subTitle"></p></div><div class="drawer-parent">'
+      + '<div class="drawer"><div class="nav-list"></div></div><button class="mobile-menu-toggle"></button><img id="elcaLogo"></div>';
+    const app = {
+      menuToggled: false,
+      contentWidth: '0px'
+    };
+    const drawer = document.getElementsByClassName('drawer')[0];
+    const drawerParent = {
+      css() {}
+    };
+    const cb = au.returnIsWideCLC(app, true, drawer, drawerParent);
+    expect(cb).toBe(true);
+    done();
+  });
+  it('handles CLC headers and logo if no logo', (done) => {
+    document.body.innerHTML = '<div class="swipe-area"></div><div class="main-panel">'
+      + '<h2 class="header-text"></h2><p class="subTitle"></p></div><div class="drawer-parent">'
+      + '<div class="drawer"><div class="nav-list"></div></div><button class="mobile-menu-toggle"></button></div>';
+    const app = {
+      menuToggled: false,
+      contentWidth: '0px'
+    };
+    const drawer = document.getElementsByClassName('drawer')[0];
+    const drawerParent = {
+      css() {}
+    };
+    const cb = au.returnIsWideCLC(app, true, drawer, drawerParent);
+    expect(cb).toBe(true);
+    done();
+  });
+  it('handles CLC headers and logo if not wide', (done) => {
+    document.body.innerHTML = '<div class="swipe-area"></div><div class="main-panel">'
+      + '<h2 class="header-text"></h2><p class="subTitle"></p></div><div class="drawer-parent">'
+      + '<div class="drawer"><div class="nav-list"></div></div><button class="mobile-menu-toggle"></button><img id="elcaLogo"></div>';
+    const app = {
+      menuToggled: false,
+      contentWidth: '0px'
+    };
+    const drawer = document.getElementsByClassName('drawer')[0];
+    const drawerParent = {
+      css() {}
+    };
+    const cb = au.returnIsWideCLC(app, false, drawer, drawerParent);
+    expect(cb).toBe(false);
+    done();
+  });
+  it('handles CLC headers and logo if wide and content width is 220px', (done) => {
+    document.body.innerHTML = '<div class="swipe-area"></div><div class="main-panel">'
+      + '<h2 class="header-text"></h2><p class="subTitle"></p></div><div class="drawer-parent">'
+      + '<div class="drawer"><div class="nav-list"></div></div><button class="mobile-menu-toggle"></button><img id="elcaLogo"></div>';
+    const app = {
+      menuToggled: false,
+      contentWidth: '220px'
+    };
+    const drawer = document.getElementsByClassName('drawer')[0];
+    const drawerParent = {
+      css() {}
+    };
+    const cb = au.returnIsWideCLC(app, true, drawer, drawerParent);
+    expect(cb).toBe(true);
+    done();
+  });
+  it('handles CLC headers and logo if not wide no headerText', (done) => {
+    document.body.innerHTML = '<div class="swipe-area"></div><div class="main-panel">'
+      + '<p class="subTitle"></p></div><div class="drawer-parent">'
+      + '<div class="drawer"><div class="nav-list"></div></div><button class="mobile-menu-toggle"></button><img id="elcaLogo"></div>';
+    const app = {
+      menuToggled: false,
+      contentWidth: '220px'
+    };
+    const drawer = document.getElementsByClassName('drawer')[0];
+    const drawerParent = {
+      css() {}
+    };
+    const cb = au.returnIsWideCLC(app, false, drawer, drawerParent);
+    expect(cb).toBe(false);
+    done();
+  });
+  it('handles CLC headers and logo if not wide no logo', (done) => {
+    document.body.innerHTML = '<div class="swipe-area"></div><div class="main-panel">'
+      + '<h2 class="header-text"></h2><p class="subTitle"></p></div><div class="drawer-parent">'
+      + '<div class="drawer"><div class="nav-list"></div></div><button class="mobile-menu-toggle"></button></div>';
+    const app = {
+      menuToggled: false,
+      contentWidth: '220px'
+    };
+    const drawer = document.getElementsByClassName('drawer')[0];
+    const drawerParent = {
+      css() {}
+    };
+    const cb = au.returnIsWideCLC(app, false, drawer, drawerParent);
+    expect(cb).toBe(false);
+    done();
+  });
+  it('handles CLC headers and logo if not wide and no logo and no main-panel', (done) => {
+    document.body.innerHTML = '<div class="swipe-area"></div>'
+      + '<h2 class="header-text"></h2><p class="subTitle"></p><div class="drawer-parent">'
+      + '<div class="drawer"><div class="nav-list"></div></div><button class="mobile-menu-toggle"></button></div>';
+    const app = {
+      menuToggled: false,
+      contentWidth: '220px'
+    };
+    const drawer = document.getElementsByClassName('drawer')[0];
+    const drawerParent = {
+      css() {}
+    };
+    const cb = au.returnIsWideCLC(app, false, drawer, drawerParent);
+    expect(cb).toBe(false);
+    done();
+  });
   it('handles the screen size functionality', (done) => {
-    document.body.innerHTML = '<div class="mobile-menu-toggle"><div class="swipe-area"></div><div class="drawer"></div></div>';
+    document.body.innerHTML = '<div class="main-panel"><div class="mobile-menu-toggle">'
+    + '<div class="swipe-area"></div><div class="drawer"></div></div></div>';
     au.handleScreenSize({
       menuToggled: false
     }, false, {
@@ -179,7 +322,7 @@ describe('the appUtils', () => {
         display: ''
       },
       css() {}
-    });
+    }, 'returnIsWide');
     expect(document.getElementsByClassName('swipe-area')[0].style.display).toBe('block');
     done();
   });
@@ -194,8 +337,19 @@ describe('the appUtils', () => {
         display: ''
       },
       css() {}
-    });
+    }, 'returnIsWide');
     expect(au.hiddenAlready).toBe(true);
+    done();
+  });
+  it('handles screen size when menu is toggled', (done) => {
+    au.returnIsWide = function returnIsWide() {
+      return true;
+    };
+    document.body.innerHTML = '<div class="mobile-menu-toggle page-host"><div class="swipe-area"></div><div class="drawer"></div></div>';
+    const cb = au.handleScreenSize({
+      menuToggled: true
+    }, true, null, 'returnIsWide');
+    expect(cb).toBe(true);
     done();
   });
   it('provides a click function', (done) => {
@@ -233,19 +387,6 @@ describe('the appUtils', () => {
     document.body.innerHTML = '<div class="mobile-menu-toggle page-host"><div class="swipe-area"></div><div class="drawer"></div></div>';
     const cb = au.returnIsWide({
       contentWidth: '182px'
-    }, true, null, {
-      css() {}
-    });
-    expect(cb).toBe(true);
-    done();
-  });
-  it('handles screen size wehn menu is toggled', (done) => {
-    au.returnIsWide = function returnIsWide() {
-      return true;
-    };
-    document.body.innerHTML = '<div class="mobile-menu-toggle page-host"><div class="swipe-area"></div><div class="drawer"></div></div>';
-    const cb = au.handleScreenSize({
-      menuToggled: true
     }, true, null, {
       css() {}
     });
