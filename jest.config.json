@@ -2,8 +2,18 @@
   "bail": true,
   "clearMocks": true,
   "collectCoverage": true,
-  "collectCoverageFrom": ["utils/*.{js,jsx}"
+  "collectCoverageFrom": ["utils/*.{js,jsx}"],
+  "setupFiles": [
+    "enzyme-react-16-adapter-setup",
+    "<rootDir>/jest-pretest.js"
   ],
+  "moduleNameMapper": {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+  },
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest"
+  },
+  "testPathIgnorePatterns": ["/node_modules/"],
   "coverageDirectory": "coverage",
   "coveragePathIgnorePatterns": ["/node_modules/"],
   "verbose": true,
