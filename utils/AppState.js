@@ -86,4 +86,4 @@ export class AppState {
     }
     // console.log('user roles are ' + this.roles);
   }
-};
+}
