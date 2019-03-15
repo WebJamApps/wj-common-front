@@ -2,8 +2,9 @@
   "bail": true,
   "clearMocks": true,
   "collectCoverage": true,
-  "collectCoverageFrom": ["utils/*.{js,jsx}"],
+  "collectCoverageFrom": ["utils/*.{js,jsx}", "component/*.{js,jsx}"],
   "setupFiles": [
+    "@babel/polyfill",
     "enzyme-react-16-adapter-setup",
     "<rootDir>/jest-pretest.js"
   ],
