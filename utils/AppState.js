@@ -1,5 +1,5 @@
 
-exports.AppState = class AppState {
+export class AppState {
   constructor(httpClient) {
     this.httpClient = httpClient;
     this.user = {};
