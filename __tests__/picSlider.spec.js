@@ -6,7 +6,8 @@ describe('the App module', () => {
   let ps;
 
   beforeEach(() => {
-    document.body.innerHTML = '<div id="renderer" class="swipe-area"></div>';
+    document.body.innerHTML = '<div id="renderer" class="swipe-area"><section id="copier"></section><section id="copyMessage">'
+      + '</section><button id="shuffle"></button><button id="play-pause"></button></div>';
     ps = new PicSlider();
     ps.data = [
       '../static/imgs/ohaf/slideshow2.png',
@@ -21,6 +22,11 @@ describe('the App module', () => {
   it('get html text', (done) => {
     const html = ps.html();
     expect(typeof html).toBe('object');
+    done();
+  });
+  
+  it('should bind the component to element defined above', (done) => {
+    // ps.bind();
     done();
   });
 });
