@@ -26,11 +26,14 @@
     "security/detect-child-process": 0,
     "security/detect-non-literal-regexp": 0,
     "security/detect-object-injection": 0,
-    "indent": ["error", 2],
+    "indent": ["off", 2],
+    "no-tabs": "off",
     "no-undef": 0,
     "no-trailing-spaces": [0, {
       "skipBlankLines": true
     }],
+    "node/no-unsupported-features/es-syntax": "off",
+    "import/named": "off",
     "prefer-destructuring": [0, "never"],
     "one-var-declaration-per-line": [0, "never"],
     "one-var": [2, {
