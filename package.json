@@ -27,7 +27,9 @@
     "fix:lint": "eslint . --fix",
     "snyk:test": "snyk test",
     "snyk:monitor": "snyk monitor",
-    "snyk:wizard": "snyk wizard"
+    "snyk:wizard": "snyk wizard",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.3.4",
@@ -49,8 +51,7 @@
     "eslint-plugin-security": "latest",
     "identity-obj-proxy": "^3.0.0",
     "jest": "latest",
-    "sinon": "latest",
-    "snyk": "latest"
+    "sinon": "latest"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
@@ -64,6 +65,8 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-player": "^1.9.3",
-    "react-slick": "^0.23.2"
-  }
+    "react-slick": "^0.23.2",
+    "snyk": "^1.192.4"
+  },
+  "snyk": true
 }
